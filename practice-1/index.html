@@ -19,45 +19,46 @@
 </main>
 <div class="overlay"></div>
 
-<aside class="modal">
+<form class="modal" method="POST">
 
   <h3 class="modal__title">Стать партнёром проекта</h3>
 
   <div class="modal__top-elems">
 
-    <label class="modal__upload">
-      <input class="modal__upload-input" type="file">
-      <span class="modal__upload-inner">
-        <span class="modal__label-text label-text">✱ Логотип (jpeg, png)</span>
-      <span class="modal__image-wrapper">
-        <span class="modal__file-close"></span>
-          <img src="images/modal__file-placeholder.jpg" alt="Улыбающийся мужчина">
-          <span class="modal__file-text">Выберите файл</span>
-      </span>
+    <label class="file-upload">
+      <input type="file">
+      <span class="file-upload__title">✱ Логотип (jpeg, png)</span>
+      <span class="file-upload__image-wrap">
+        <span class="file-upload__close"></span>
+          <img class="file-upload__img" src="images/file-placeholder.jpg" alt="Улыбающийся мужчина">
+          <span class="file-upload__text">Выберите<br>файл</span>
       </span>
     </label>
 
-    <div class="modal__info-wrapper">
-      <label class="modal__input modal__input">
-        <span class="modal__label-text">Название организации</span>
-        <input class="modal__input" type="text" required>
+    <div class="modal__info-elems">
+
+      <label class="input__label">
+        <span class="input__title">✱ Название организации</span>
+        <input class="input" type="text" required>
       </label>
 
-      <label class="modal__input modal__input">
-        <span class="modal__label-text">Телефон</span>
-        <input class="modal__input" type="text" required>
+      <label class="input__label">
+        <span class="input__title">✱ Телефон</span>
+        <input class="input" type="text" required>
       </label>
 
-      <label class="modal__input modal__input">
-        <span class="modal__label-text">E-mail</span>
-        <input class="modal__input" type="text" required>
+      <label class="input__label">
+        <span class="input__title">✱ E-mail</span>
+        <input class="input" type="text" required>
       </label>
+
     </div>
 
   </div>
 
-  <label class="modal__input--select">
-    <select name="line">
+  <label class="select__label">
+    <span class="select__title">✱ Направление</span>
+    <select class="select" name="line">
       <option disabled selected>Выберите направление:</option>
       <option value="eco">Экология</option>
       <option value="transport">Транспорт</option>
@@ -65,35 +66,38 @@
     </select>
   </label>
 
-  <label class="modal__input modal__input--web">
-    <input class="modal__input" type="text">
+  <label class="input__label input__label--web">
+    <input class="input" type="text">
   </label>
 
-  <label class="modal__input modal__input--vk">
-    <input class="modal__input" type="text">
+  <label class="input__label input__label--vk">
+    <input class="input" type="text">
   </label>
 
-  <label class="modal__input modal__input--ok">
-    <input class="modal__input" type="text">
+  <label class="input__label input__label--ok">
+    <input class="input" type="text">
   </label>
 
-  <label class="modal__input modal__input--fb">
-    <input class="modal__input" type="text">
+  <label class="input__label input__label--fb">
+    <input class="input" type="text">
   </label>
 
-  <label class="modal__input modal__input--ig">
-    <input class="modal__input" type="text">
+  <label class="input__label input__label--ig">
+    <input class="input" type="text">
   </label>
 
-  <label class="modal__input modal__input--yt">
-    <input class="modal__input" type="text">
+  <label class="input__label input__label--yt">
+    <input class="input" type="text">
   </label>
 
-  <label class="modal__input modal__input">
-    <span class="modal__label-text">Руководитель</span>
-    <input class="modal__input" type="text">
+  <label class="input__label">
+    <span class="input__title">✱ Руководитель</span>
+    <input class="input" type="text">
   </label>
-</aside>
+
+  <button class="button button--solid modal__solid-button">Стать партнёром проекта</button>
+  <button class="button button--simple">Отменить</button>
+</form>
 
 
 <script defer src="script.js"></script>
