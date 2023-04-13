@@ -15,7 +15,7 @@
 </head>
 <body class="body">
 <main class="main">
-  <button class="button--main">Написать</button>
+  <button class="button button--main">Написать</button>
 </main>
 <div class="overlay"></div>
 
@@ -25,8 +25,8 @@
 
   <div class="modal__top-elems">
 
-    <label class="file-upload">
-      <input type="file">
+    <label class="file-upload modal__file">
+      <input type="file" required>
       <span class="file-upload__title">✱ Логотип (jpeg, png)</span>
       <span class="file-upload__image-wrap">
         <span class="file-upload__close"></span>
@@ -39,17 +39,17 @@
 
       <label class="input__label">
         <span class="input__title">✱ Название организации</span>
-        <input class="input" type="text" required>
+        <input class="input input--titled" type="text" required>
       </label>
 
       <label class="input__label">
         <span class="input__title">✱ Телефон</span>
-        <input class="input" type="text" required>
+        <input class="input input--titled" type="tel" required>
       </label>
 
       <label class="input__label">
         <span class="input__title">✱ E-mail</span>
-        <input class="input" type="text" required>
+        <input class="input input--titled" type="email" required>
       </label>
 
     </div>
@@ -66,39 +66,38 @@
     </select>
   </label>
 
-  <label class="input__label input__label--web">
-    <input class="input" type="text">
-  </label>
-
-  <label class="input__label input__label--vk">
-    <input class="input" type="text">
-  </label>
-
-  <label class="input__label input__label--ok">
-    <input class="input" type="text">
-  </label>
-
-  <label class="input__label input__label--fb">
-    <input class="input" type="text">
-  </label>
-
-  <label class="input__label input__label--ig">
-    <input class="input" type="text">
-  </label>
-
-  <label class="input__label input__label--yt">
-    <input class="input" type="text">
+  <label class="input__label">
+    <input class="input input--web" type="text">
   </label>
 
   <label class="input__label">
-    <span class="input__title">✱ Руководитель</span>
-    <input class="input" type="text">
+    <input class="input input--vk" type="text">
   </label>
 
-  <button class="button button--solid modal__solid-button">Стать партнёром проекта</button>
+  <label class="input__label">
+    <input class="input input--ok" type="text">
+  </label>
+
+  <label class="input__label">
+    <input class="input input--fb" type="text">
+  </label>
+
+  <label class="input__label">
+    <input class="input input--ig" type="text">
+  </label>
+
+  <label class="input__label">
+    <input class="input input--yt" type="text">
+  </label>
+
+  <label class="input__label">
+    <span class="input__title input__title--simple">Руководитель</span>
+    <input class="input input--titled" type="text">
+  </label>
+
+  <button type="submit" class="button button--solid modal__submit">Стать партнёром проекта</button>
   <button class="button button--simple">Отменить</button>
 </form>
-
 
 <script defer src="script.js"></script>
 </body>

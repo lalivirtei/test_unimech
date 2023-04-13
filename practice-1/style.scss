@@ -26,7 +26,7 @@ html {
 }
 
 .main {
-  height: 1200px;
+  height: 1300px;
   padding: 25px;
   font-family: 'PT Sans', sans-serif;
   font-size: 24px;
@@ -63,7 +63,19 @@ html {
   background: #fff;
 
   @media (min-width: $screen-sm) {
-    padding: 25px 30px;
+    top: 40px;
+    padding: 40px 50px;
+    max-width: $screen-sm;
+  }
+
+  @media (min-width: $screen-md) {
+    top: 60px;
+    padding: 53px 98px 70px 98px;
+    max-width: 754px;
+  }
+
+  @media (min-width: $screen-lg) {
+    top: 101px;
   }
 
   &__title {
@@ -78,14 +90,37 @@ html {
     @media (min-width: $screen-sm) {
       font-size: 28px;
     }
+
+    @media (min-width: $screen-md) {
+      margin-bottom: 35px;
+    }
+  }
+
+  &__top-elems {
+    @media (min-width: $screen-lg) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__file {
+    @media (min-width: $screen-lg) {
+      order: 2;
+    }
   }
 
   &__info-elems {
     display: flex;
     flex-direction: column;
+
+    @media (min-width: $screen-lg) {
+      flex-basis: 362px;
+      order: 1;
+    }
   }
 
-  &__solid-button {
+  &__submit {
+    margin-top: 18px;
     margin-bottom: 15px;
   }
 }
@@ -95,16 +130,30 @@ html {
   cursor: pointer;
   margin-bottom: 25px;
 
+  @media (min-width: $screen-lg) {
+    padding-top: 3px;
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    .file-upload__text {
+      text-decoration: none;
+    }
+  }
+
   &__title {
     display: block;
-    margin-bottom: 7px;
+    margin-bottom: 15px;
     font-family: 'PT Sans', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
     line-height: 133%;
-    //text-align: center;
     color: var(--dark-200);
+
+    @media (min-width: $screen-lg) {
+      text-align: center;
+    }
 
     &:first-letter {
       color: var(--red-900);
@@ -118,13 +167,19 @@ html {
 
   &__close {
     position: absolute;
-    top: 15px;
-    right: 8px;
+    z-index: 1;
+    top: 10px;
+    right: 4px;
     display: inline-block;
     width: 36px;
     height: 36px;
     border-radius: 50%;
     background: white url("images/close.svg") center center/15px no-repeat;
+    transition: var(--transition-main);
+
+    &:hover {
+      background-color: var(--dark-100);
+    }
   }
 
   &__img {
@@ -132,7 +187,6 @@ html {
     width: 100%;
     height: 100%;
     margin: 0;
-    border: 5px solid white;
     border-radius: 50%;
     overflow: hidden;
     object-fit: contain;
@@ -147,7 +201,7 @@ html {
     height: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 75px;
+    padding-top: 78px;
 
     font-family: 'PT Sans', sans-serif;
     font-weight: 400;
@@ -168,7 +222,7 @@ html {
 .input {
   width: 100%;
   height: 100%;
-  padding: 17px 16px;
+  padding: 17px 45px 16px 16px;
   border: 1px solid var(--dark-100);
   border-radius: 2px;
 
@@ -181,6 +235,39 @@ html {
   outline: none;
   transition: var(--transition-main);
 
+  background-position: center right 16px;
+  background-size: 18px;
+  background-repeat: no-repeat;
+
+  &--web {
+    background-image: url('images/web.svg');
+  }
+
+  &--vk {
+    background-image: url('images/vk.svg');
+    background-position: center right 16px;
+    background-size: 19px;
+  }
+
+  &--ok {
+    background-image: url('images/ok.svg');
+  }
+
+  &--fb {
+    background-image: url('images/fb.svg');
+    background-position: center right 18px;
+    background-size: 19px;
+  }
+
+  &--ig {
+    background-image: url('images/ig.svg');
+    background-position: center right 18px;
+  }
+
+  &--yt {
+    background-image: url('images/yt.svg');
+  }
+
   &:focus {
     box-shadow: inset 0 0 3px var(--blue-400);
   }
@@ -188,17 +275,21 @@ html {
   &__label {
     position: relative;
     margin-bottom: 15px;
+
+    @media (min-width: $screen-lg) {
+      margin-bottom: 32.7px;
+    }
   }
 
-  &[required] {
-    padding-top: 24px;
-    padding-bottom: 10px;
+  &--titled {
+    padding-top: 22.8px;
+    padding-bottom: 10.8px;
   }
 
   &__title {
     position: absolute;
     top: 8px;
-    left: 16px;
+    left: 15px;
 
     font-family: 'PT Sans', sans-serif;
     font-weight: 400;
@@ -208,6 +299,10 @@ html {
 
     &:first-letter {
       color: var(--red-900);
+    }
+
+    &--simple:first-letter {
+      color: inherit;
     }
   }
 }
@@ -222,9 +317,9 @@ html {
   line-height: 1.5;
   height: 56px;
   width: 100%;
-  padding: 24px 16px 8px;
+  padding: 18px 16px 8px;
 
-  background: url("images/arrow.svg") right 0.8em center / 12px 7px no-repeat;
+  background: url("images/arrow.svg") right 19px center/12px 11px no-repeat;
   color: var(--dark-900);
   border-radius: 2px;
   cursor: pointer;
@@ -240,6 +335,10 @@ html {
   &__label {
     position: relative;
     margin-bottom: 15px;
+
+    @media (min-width: $screen-lg) {
+      margin-bottom: 32.7px;
+    }
   }
 
   &__title {
