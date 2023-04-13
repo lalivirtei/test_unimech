@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Модальное окно</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@800&family=PT+Sans&display=swap"
+        rel="stylesheet">
+</head>
+<body class="body">
+<main class="main">
+  <button class="button--main">Написать</button>
+</main>
+<div class="overlay"></div>
+
+<aside class="modal">
+
+  <h3 class="modal__title">Стать партнёром проекта</h3>
+
+  <div class="modal__top-elems">
+
+    <label class="modal__upload">
+      <input class="modal__upload-input" type="file">
+      <span class="modal__upload-inner">
+        <span class="modal__label-text label-text">✱ Логотип (jpeg, png)</span>
+      <span class="modal__image-wrapper">
+        <span class="modal__file-close"></span>
+          <img src="images/modal__file-placeholder.jpg" alt="Улыбающийся мужчина">
+          <span class="modal__file-text">Выберите файл</span>
+      </span>
+      </span>
+    </label>
+
+    <div class="modal__info-wrapper">
+      <label class="modal__input modal__input">
+        <span class="modal__label-text">Название организации</span>
+        <input class="modal__input" type="text" required>
+      </label>
+
+      <label class="modal__input modal__input">
+        <span class="modal__label-text">Телефон</span>
+        <input class="modal__input" type="text" required>
+      </label>
+
+      <label class="modal__input modal__input">
+        <span class="modal__label-text">E-mail</span>
+        <input class="modal__input" type="text" required>
+      </label>
+    </div>
+
+  </div>
+
+  <label class="modal__input--select">
+    <select name="line">
+      <option disabled selected>Выберите направление:</option>
+      <option value="eco">Экология</option>
+      <option value="transport">Транспорт</option>
+      <option value="it">Информационные технологии</option>
+    </select>
+  </label>
+
+  <label class="modal__input modal__input--web">
+    <input class="modal__input" type="text">
+  </label>
+
+  <label class="modal__input modal__input--vk">
+    <input class="modal__input" type="text">
+  </label>
+
+  <label class="modal__input modal__input--ok">
+    <input class="modal__input" type="text">
+  </label>
+
+  <label class="modal__input modal__input--fb">
+    <input class="modal__input" type="text">
+  </label>
+
+  <label class="modal__input modal__input--ig">
+    <input class="modal__input" type="text">
+  </label>
+
+  <label class="modal__input modal__input--yt">
+    <input class="modal__input" type="text">
+  </label>
+
+  <label class="modal__input modal__input">
+    <span class="modal__label-text">Руководитель</span>
+    <input class="modal__input" type="text">
+  </label>
+</aside>
+
+
+<script defer src="script.js"></script>
+</body>
+</html>
