@@ -91,6 +91,7 @@ function sortStringArray(arr, colName, isDesc) {
 }
 
 function filterTable(table, data, searchStr) {
+  if (searchStr.length < 3) return;
 
   sorryMsg.classList.remove('shown');
 
