@@ -1,7 +1,9 @@
 let tableToFill = document.getElementById('table-to-fill');
-let previousClickedElement;
+let previousColumn;
 
 let isClicked = false;
+
+let isDescending = false;
 
 fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
@@ -56,21 +58,56 @@ function fillTable(table, data) {
 function sortTable(event, table, data) {
   if (event.target.tagName !== 'TH') return;
 
-  let columnName = event.target.textContent;
+  let currentColumn = event.target.textContent;
+  let isNumericColumn = currentColumn === 'userId' || currentColumn === 'id';
 
-  if (previousClickedElement === columnName) {
-    isClicked = true;
+  // If is second click - sort descending
+  if (previousColumn === currentColumn) {
+    isDescending = true;
   } else {
-    previousClickedElement = columnName;
-    isClicked = false;
+    previousColumn = currentColumn;
+    isDescending = false;
   }
 
-  if (isClicked) {
-    data.sort((a, b) =>  b[columnName] - a[columnName]);
+  if (isDescending) {
+    if (isNumericColumn) {
+      data.sort((a, b) => b[currentColumn] - a[currentColumn]);
+    } else {
+      sortStringArray(data, 'asc');
+    }
+    previousColumn = '';
   } else {
-    data.sort((a, b) =>  a[columnName] - b[columnName]);
+    if (isNumericColumn) {
+      data.sort((a, b) => a[currentColumn] - b[currentColumn]);
+    } else {
+      sortStringArray(data, 'desc');
+    }
   }
 
   document.querySelector('table').innerHTML = '';
   fillTable(tableToFill, data);
+}
+
+function sortStringArray(arr, type) {
+  if (type === 'desc') {
+    arr.sort((a, b) => {
+      if (a > b) {
+        return -1;
+      } else if (a < b) {
+        return 1;
+      } else {
+        return 0;
+      }
+    })
+  } else if (type === 'asc') {
+    arr.sort((a, b) => {
+      if (a < b) {
+        return -1;
+      } else if (a > b) {
+        return 1;
+      } else {
+        return 0;
+      }
+    })
+  }
 }
