@@ -25,19 +25,11 @@ function fillTable(table, data) {
   data.forEach(item => {
     let row = document.createElement('tr');
 
-    let userId = document.createElement('td');
-    userId.textContent = item["userId"];
-    let id = document.createElement('td');
-    id.textContent = item["id"];
-    let title = document.createElement('td');
-    title.textContent = item["title"];
-    let body = document.createElement('td');
-    body.textContent = item["body"];
-
-    row.appendChild(userId);
-    row.appendChild(id);
-    row.appendChild(title);
-    row.appendChild(body);
+    for (let key in item) {
+      let el = document.createElement('td');
+      el.textContent = item[key];
+      row.appendChild(el);
+    }
 
     tbody.appendChild(row);
   });

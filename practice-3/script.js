@@ -1,9 +1,4 @@
 let tableToFill = document.getElementById('table-to-fill');
-let previousColumn;
-
-let isClicked = false;
-
-let isDescending = false;
 
 fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
@@ -26,34 +21,26 @@ function fillTable(table, data) {
   }
   table.appendChild(head);
 
-
   //fill body
   let tbody = document.createElement('tbody')
 
   data.forEach(item => {
     let row = document.createElement('tr');
 
-    let userId = document.createElement('td');
-    userId.textContent = item["userId"];
-    let id = document.createElement('td');
-    id.textContent = item["id"];
-    let title = document.createElement('td');
-    title.textContent = item["title"];
-    let body = document.createElement('td');
-    body.textContent = item["body"];
-
-    row.appendChild(userId);
-    row.appendChild(id);
-    row.appendChild(title);
-    row.appendChild(body);
+    for (let key in item) {
+      let el = document.createElement('td');
+      el.textContent = item[key];
+      row.appendChild(el);
+    }
 
     tbody.appendChild(row);
   });
 
-
   table.appendChild(tbody);
 }
 
+let previousColumn;
+let isDescending = false;
 
 function sortTable(event, table, data) {
   if (event.target.tagName !== 'TH') return;
@@ -73,23 +60,23 @@ function sortTable(event, table, data) {
     if (isNumericColumn) {
       data.sort((a, b) => b[currentColumn] - a[currentColumn]);
     } else {
-      sortStringArray(data, currentColumn, 'desc');
+      sortStringArray(data, currentColumn, isDescending);
     }
     previousColumn = '';
   } else {
     if (isNumericColumn) {
       data.sort((a, b) => a[currentColumn] - b[currentColumn]);
     } else {
-      sortStringArray(data, currentColumn, 'asc');
+      sortStringArray(data, currentColumn, isDescending);
     }
   }
 
-  document.querySelector('table').innerHTML = '';
+  tableToFill.innerHTML = '';
   fillTable(tableToFill, data);
 }
 
-function sortStringArray(arr, colName, type) {
-  if (type === 'desc') {
+function sortStringArray(arr, colName, isDesc) {
+  if (isDesc) {
     arr.sort((a, b) => {
       if (a[colName] > b[colName]) {
         return -1;
@@ -99,7 +86,7 @@ function sortStringArray(arr, colName, type) {
         return 0;
       }
     })
-  } else if (type === 'asc') {
+  } else {
     arr.sort((a, b) => {
       if (a[colName] < b[colName]) {
         return -1;
