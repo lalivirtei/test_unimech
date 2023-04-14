@@ -26,7 +26,7 @@ iconicInputs.forEach(item => {
       resetInputIcons(el);
       el.classList.add('input--ig');
 
-    } else if (el.value.includes('www.youtube.com')) {
+    } else if (el.value.includes('youtube.com')) {
       resetInputIcons(el);
       el.classList.add('input--yt');
 
