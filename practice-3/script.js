@@ -91,7 +91,13 @@ function sortStringArray(arr, colName, isDesc) {
 }
 
 function filterTable(table, data, searchStr) {
-  if (searchStr.length < 3) return;
+  if (searchStr.length === 0) {
+    table.innerHTML = '';
+    fillTable(tableToFill, data);
+    return;
+  } else if (searchStr.length < 3) {
+    return;
+  }
 
   sorryMsg.classList.remove('shown');
 
