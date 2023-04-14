@@ -1,0 +1,25 @@
+table {
+  border-collapse: collapse;
+  font-family: sans-serif;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #eee;
+  border-top: none;
+}
+
+th {
+  padding: 24px;
+  background: black;
+  color: white;
+  border: none;
+}
+
+td {
+  padding: 24px;
+  font-size: 16px;
+}
+
+tr:nth-of-type(odd) {
+  background: #eee;
+}
