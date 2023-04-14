@@ -20,3 +20,9 @@
 
 Просмотр: [Открыть сайт](https://test-uni-lalivirtei.netlify.app/practice-2/)       
 Код: [practice-2](/practice-2)
+
+
+### Задание 3
+
+Просмотр: [Открыть сайт](https://test-uni-lalivirtei.netlify.app/practice-3/)       
+Код: [practice-3](/practice-3)
