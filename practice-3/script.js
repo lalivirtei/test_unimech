@@ -91,9 +91,11 @@ function sortStringArray(arr, colName, isDesc) {
 }
 
 function filterTable(table, data, searchStr) {
+
   if (searchStr.length === 0) {
     table.innerHTML = '';
     fillTable(tableToFill, data);
+    sorryMsg.classList.remove('shown');
     return;
   } else if (searchStr.length < 3) {
     return;
