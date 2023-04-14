@@ -73,14 +73,14 @@ function sortTable(event, table, data) {
     if (isNumericColumn) {
       data.sort((a, b) => b[currentColumn] - a[currentColumn]);
     } else {
-      sortStringArray(data, 'asc');
+      sortStringArray(data, currentColumn, 'desc');
     }
     previousColumn = '';
   } else {
     if (isNumericColumn) {
       data.sort((a, b) => a[currentColumn] - b[currentColumn]);
     } else {
-      sortStringArray(data, 'desc');
+      sortStringArray(data, currentColumn, 'asc');
     }
   }
 
@@ -88,12 +88,12 @@ function sortTable(event, table, data) {
   fillTable(tableToFill, data);
 }
 
-function sortStringArray(arr, type) {
+function sortStringArray(arr, colName, type) {
   if (type === 'desc') {
     arr.sort((a, b) => {
-      if (a > b) {
+      if (a[colName] > b[colName]) {
         return -1;
-      } else if (a < b) {
+      } else if (a[colName] < b[colName]) {
         return 1;
       } else {
         return 0;
@@ -101,9 +101,9 @@ function sortStringArray(arr, type) {
     })
   } else if (type === 'asc') {
     arr.sort((a, b) => {
-      if (a < b) {
+      if (a[colName] < b[colName]) {
         return -1;
-      } else if (a > b) {
+      } else if (a[colName] > b[colName]) {
         return 1;
       } else {
         return 0;
