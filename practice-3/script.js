@@ -39,35 +39,29 @@ function fillTable(table, data) {
   table.appendChild(tbody);
 }
 
-let previousColumn;
-let isDescending = false;
+let prevName;
 
 function sortTable(event, table, data) {
   if (event.target.tagName !== 'TH') return;
 
-  let currentColumn = event.target.textContent;
-  let isNumericColumn = currentColumn === 'userId' || currentColumn === 'id';
+  let name = event.target.textContent;
+  let isNumeric = name === 'userId' || name === 'id';
 
   // If is second click - sort descending
-  if (previousColumn === currentColumn) {
-    isDescending = true;
-  } else {
-    previousColumn = currentColumn;
-    isDescending = false;
-  }
-
-  if (isDescending) {
-    if (isNumericColumn) {
-      data.sort((a, b) => b[currentColumn] - a[currentColumn]);
+  if (prevName === name) {
+    if (isNumeric) {
+      data.sort((a, b) => b[name] - a[name]);
     } else {
-      sortStringArray(data, currentColumn, isDescending);
+      sortStringArray(data, name, true);
     }
-    previousColumn = '';
+    prevName = '';
+
   } else {
-    if (isNumericColumn) {
-      data.sort((a, b) => a[currentColumn] - b[currentColumn]);
+    prevName = name;
+    if (isNumeric) {
+      data.sort((a, b) => a[name] - b[name]);
     } else {
-      sortStringArray(data, currentColumn, isDescending);
+      sortStringArray(data, name, false);
     }
   }
 
@@ -76,25 +70,13 @@ function sortTable(event, table, data) {
 }
 
 function sortStringArray(arr, colName, isDesc) {
-  if (isDesc) {
-    arr.sort((a, b) => {
-      if (a[colName] > b[colName]) {
-        return -1;
-      } else if (a[colName] < b[colName]) {
-        return 1;
-      } else {
-        return 0;
-      }
-    })
-  } else {
-    arr.sort((a, b) => {
-      if (a[colName] < b[colName]) {
-        return -1;
-      } else if (a[colName] > b[colName]) {
-        return 1;
-      } else {
-        return 0;
-      }
-    })
-  }
+  arr.sort((a, b) => {
+    if (a[colName] > b[colName]) {
+      return isDesc ? -1 : 1;
+    } else if (a[colName] < b[colName]) {
+      return isDesc ? 1 : -1;
+    } else {
+      return 0;
+    }
+  })
 }
