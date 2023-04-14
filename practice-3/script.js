@@ -1,4 +1,7 @@
 let tableToFill = document.getElementById('table-to-fill');
+let search = document.getElementById('search');
+let sorryMsg = document.querySelector('.not-found');
+let delay;
 
 fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
@@ -7,6 +10,12 @@ fetch('https://jsonplaceholder.typicode.com/posts')
       document.addEventListener('click', (event) => {
         sortTable(event, tableToFill, elems)
       });
+      search.oninput = (event) => {
+        clearTimeout(delay);
+        delay = setTimeout(function () {
+          filterTable(tableToFill, elems, event.target.value);
+        }.bind(this), 500);
+      }
     });
 
 function fillTable(table, data) {
@@ -79,4 +88,29 @@ function sortStringArray(arr, colName, isDesc) {
       return 0;
     }
   })
+}
+
+function filterTable(table, data, searchStr) {
+
+  sorryMsg.classList.remove('shown');
+
+  let filteredData = data.filter(item => {
+    let checker = false;
+
+    for (let value of Object.values(item)) {
+      let stringVal = value.toString();
+      if (stringVal.includes(searchStr)) {
+        checker =  true;
+      }
+    }
+
+    return checker;
+  });
+
+  if (!filteredData[0]) {
+    sorryMsg.classList.add('shown');
+  }
+
+  tableToFill.innerHTML = '';
+  fillTable(tableToFill, filteredData);
 }
